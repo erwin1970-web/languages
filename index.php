@@ -1,5 +1,24 @@
 <?php
+
+session_start();
+if (isset($_GET['lang'])) {
+  $language = preg_replace('/[^a-z]/i', '', $_GET['lang']);
+  setcookie('lang', $language, time()+60*60*24*365, '/');
+} else {
+  $language = $_COOKIE['lang'] ?? 'nl';
+}
+
+
 declare(strict_types=1);
+
+function t(string $key, string $fallback = ''): string {
+  global $dict;
+  if (!isset($dict[$key])) {
+    error_log("Missing i18n key: $key");
+  }
+  return $dict[$key] ?? $fallback;
+}
+
 
 function loadDict(string $lang): array {
   $path = __DIR__ . "/lang/$lang.json";
@@ -26,5 +45,21 @@ include __DIR__ . '/views/header.php';
   <section class="intro">
     <p><?= htmlspecialchars(t('intro', 'Welkom!')) ?></p>
   </section>
+
+  
+// index.php (in <main>)
+<section id="flashcards" class="cards"></section>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const lang = new URLSearchParams(location.search).get('lang') || 'nl';
+  // Later: fetch(`/api/words?lang=${lang}`)
+  // voorlopig demo:
+  const words = [{q:'hallo',a:'hello'},{q:'dank je',a:'thank you'}];
+  const root = document.querySelector('#flashcards');
+  root.innerHTML = words.map(w=>`<div class="card"><b>${w.q}</b><div>${w.a}</div></div>`).join('');
+});
+</script>
+ 
 </main>
+
 <?php include __DIR__ . '/views/footer.php';
