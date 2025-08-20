@@ -4,13 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><?= htmlspecialchars(t('title', 'Taaltrainer')) ?></title>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <!-- Gebruik relatieve paden, dus zonder leading slash -->
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header class="site-header">
       <nav class="nav">
-        <a href="/?lang=nl"><?= htmlspecialchars(t('language.nl', 'Nederlands')) ?></a>
+        <!-- Ook hier: geen leading slash, dan blijft hij netjes binnen /languages/ -->
+        <a href="?lang=nl"><?= htmlspecialchars(t('language.nl', 'Nederlands')) ?></a>
         <span> | </span>
-        <a href="/?lang=en"><?= htmlspecialchars(t('language.en', 'English')) ?></a>
+        <a href="?lang=en"><?= htmlspecialchars(t('language.en', 'English')) ?></a>
       </nav>
     </header>
+
