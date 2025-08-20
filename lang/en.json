@@ -1,0 +1,9 @@
+{
+  "title": "Language Trainer",
+  "subtitle": "Learn words with flashcards",
+  "nav.home": "Home",
+  "nav.about": "About",
+  "language.nl": "Dutch",
+  "language.en": "English",
+  "intro": "Welcome! Use the top-right language switch to translate the interface."
+}

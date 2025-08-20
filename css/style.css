@@ -1,0 +1,11 @@
+:root { --maxw: 920px; --pad: 16px; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; }
+.site-header, .site-footer { border-bottom: 1px solid #e5e7eb; padding: var(--pad); }
+.site-footer { border-top: 1px solid #e5e7eb; border-bottom: none; text-align: center; color: #6b7280; }
+.nav { max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: flex-end; gap: 8px; }
+.container { max-width: var(--maxw); margin: 24px auto; padding: 0 var(--pad); }
+.subtitle { color: #4b5563; margin-top: -6px; }
+.intro { background: #f9fafb; border: 1px solid #e5e7eb; padding: 16px; border-radius: 12px; }
+a { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
